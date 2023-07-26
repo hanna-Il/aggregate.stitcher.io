@@ -230,21 +230,8 @@ class Post extends Model implements Feedable
             return $cache;
         }
 
-        $days = DB::query()
-            ->from((new PostVisit())->getTable())
-            ->selectRaw('`created_at_day`, COUNT(*) as `visits`')
-            ->where('post_id', $this->id)
-            ->groupBy('created_at_day')
-            ->orderByDesc('created_at_day')
-            ->limit(20)
-            ->get()
-            ->map(fn(object $row) => new SparkLineDay(
-                count: $row->visits,
-                day: Carbon::make($row->created_at_day),
-            ));
-
         $sparkLine = SparkLine::new($days)
-            ->withMaxItemAmount(20)
+//            ->withMaxItemAmount(20)
             ->make();
 
         Cache::put(
