@@ -17,28 +17,9 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password',
-        'invited_by',
+        'invited_at',
         'invitation_code',
-        'email_verified_at',
-        'banned_at',
-        'remember_token',
     ];
-
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'banned_at' => 'datetime',
-    ];
-
-    public function invitedBy(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'invited_by', 'id');
-    }
 
     public function postVisits(): HasMany
     {
