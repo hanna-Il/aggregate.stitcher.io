@@ -94,6 +94,27 @@ Route::middleware(['auth'])
         Route::post('/invite', SendUserInvitationController::class);
     });
 
+Route::middleware(['auth'])
+    ->prefix('/groups')
+    ->group(function () {
+        Route::get('/', \App\Http\Controllers\Groups\IndexGroupsController::class);
+        Route::get('/create', \App\Http\Controllers\Groups\CreateGroupController::class);
+        Route::post('/create', \App\Http\Controllers\Groups\StoreGroupController::class);
+        Route::get('/{group}', \App\Http\Controllers\Groups\ShowGroupController::class);
+        Route::get('/{group}/edit', \App\Http\Controllers\Groups\EditGroupController::class);
+        Route::post('/{group}/edit', \App\Http\Controllers\Groups\UpdateGroupController::class);
+        Route::post('/{group}/delete', \App\Http\Controllers\Groups\DestroyGroupController::class);
+
+        // Invite links
+        Route::get('/{group}/invite', \App\Http\Controllers\Groups\InviteGroupController::class);
+        Route::post('/{group}/invite/regenerate', [\App\Http\Controllers\Groups\InviteGroupController::class, 'regenerate']);
+        Route::get('/{group}/invite/{code}/accept', \App\Http\Controllers\Groups\AcceptInviteController::class);
+
+        // Membership
+        Route::post('/{group}/leave', \App\Http\Controllers\Groups\LeaveGroupController::class);
+        Route::post('/{group}/remove/{user}', \App\Http\Controllers\Groups\RemoveMemberController::class);
+    });
+
 Route::middleware(['auth', IsAdminMiddleware::class])
     ->prefix('/admin')
     ->group(function () {

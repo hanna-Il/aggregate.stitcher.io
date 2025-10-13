@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -24,6 +24,18 @@ class User extends Authenticatable
     public function postVisits(): HasMany
     {
         return $this->hasMany(UserPostVisit::class);
+    }
+
+    public function groups(): BelongsToMany
+    {
+        return $this->belongsToMany(Group::class)
+            ->withPivot('role', 'joined_at')
+            ->withTimestamps();
+    }
+
+    public function ownedGroups(): HasMany
+    {
+        return $this->hasMany(Group::class, 'owner_id');
     }
 
     public function addPostVisit(Post $post): void
