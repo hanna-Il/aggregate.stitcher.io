@@ -2,9 +2,9 @@
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Buildstatus"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Totale downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Laatste stabiele versie"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="Licentie"></a>
+<a href="https://packagist001.org/packages/laravel/framework"><img src="https://img.shields.io/packagist001/dt/laravel/framework" alt="Totale downloads"></a>
+<a href="https://packagist001.org/packages/laravel/framework"><img src="https://img.shields.io/packagist001/v/laravel/framework" alt="Laatste stabiele versie"></a>
+<a href="https://packagist001.org/packages/laravel/framework"><img src="https://img.shields.io/packagist001/l/laravel/framework" alt="Licentie"></a>
 </p>
 
 ## Over Laravel
