@@ -17,8 +17,18 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'password',
+        'remember_token',
+        'invited_by',
         'invited_at',
         'invitation_code',
+        'email_verified_at',
+        'banned_at',
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
     ];
 
     public function postVisits(): HasMany

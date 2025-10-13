@@ -83,7 +83,7 @@ class Source extends Model
         return ! $this->isPublished();
     }
 
-    public function canDeny(): bool
+    private function canDeny(): bool
     {
         return ! $this->isDenied();
     }
